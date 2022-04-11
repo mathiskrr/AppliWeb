@@ -1,0 +1,64 @@
+body{
+	background: #009099;
+}
+.navbar-brand img{
+	max-height: 50px;
+}
+.bg-light {
+	background-color: #5CC7B2!important;
+}
+#frm{
+	border: solid gray 1px;
+	width: 20%;
+	border-radius: 5px;
+	margin: 100px auto;
+	background: rgb(75, 74, 74);
+	padding: 50px;
+}
+#btn{
+	color: #fff;
+	background: #6EF4EE;
+	padding: 5px;
+	margin-left: 59%;
+}
+
+h2 { 
+  width: 20%;
+}
+
+.Graphiques{
+	margin: 0 auto;
+}
+
+.Temp h3{
+	color: #eeff00;
+}
+
+.Temp table{
+	color: #ffffff;
+}
+
+.Elec h3{
+	color: #2f00ff;
+}
+
+.Elec table{
+	color: #ffffff;
+}
+
+.Humid h3{
+	color: #15ff00;
+}
+
+.Humid table{
+	color: #ffffff;
+}
+
+.navbarh1{
+	color: #ffffff;
+	Font-family: Consolas, monaco, monospace;
+	text-align: center;
+	margin-left: 35%;
+}
+
+
