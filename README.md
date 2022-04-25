@@ -1,3 +1,3 @@
 # AppliWebOld
 
-Cette application web n'est pas encore finie !
+Cette application web n'est pas encore finie ! Alors ne modifiez rien sans raison !!!
