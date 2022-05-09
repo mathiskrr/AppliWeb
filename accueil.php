@@ -83,22 +83,18 @@ session_start();
   	<?php include 'navbar.php';?>
 
 	<!--******************GRAPHS******************-->
-    <div id="responds1"></div>
+    <div id="id_graph"></div>
 
-    <?php include 'graphs.php';?>
+    <!--******************REFRESHGRAPH******************-->
 
-    <!--******************B******************-->
+    <script src="./refreshGraph.js"></script>
 
-    <script>
-    $.ajax({
-  url: 'http://192.168.0.80/graphs.php',
-  success: function(data) {
-    if (data == "refresh"){
-      window.location.reload(); // This is not jQuery but simple plain ol' JS
-    }
-  }
-});
-</script>
+    <script type="text/javascript">
+	    $(document).ready(function () {
+		    // 1er appel pour inclure le graphe et mettre en route le timer
+		  refreshGraph();
+	  });
+    </script>
 
    </body>
 </html>
