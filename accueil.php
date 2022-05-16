@@ -4,10 +4,10 @@
 
 session_start();
 
-			$servername = "192.168.0.28";
-			$username = "mathis_carrere";
-			$password = "sbRQi87R7";
-			$dbname = "BEnOcean";
+          $servername = "localhost";
+          $username = "root";
+          $password = "";
+          $dbname = "BEnOcean";
 
 			// Création de la connexion
 			$mysqli = new mysqli($servername, $username, $password, $dbname) or die($mysqli->error);
@@ -23,7 +23,7 @@ session_start();
 
 
 			//Récupération des données de mesures
-			$sqltemp = "SELECT module_id, sensor_value, date_value FROM TTemperature";
+			$sqltemp = "SELECT module_id, sensor_value, date_value FROM TTemperature ORDER BY date_value DESC LIMIT 20;";
 			$resulttemp = mysqli_query($mysqli, $sqltemp);
 
 			while ($rowtemp = mysqli_fetch_array($resulttemp)) {
@@ -33,7 +33,7 @@ session_start();
                 }
               }
 
-      $sqlelec = "SELECT module_id, cons_value, date_value FROM TElecConsumption";
+      $sqlelec = "SELECT module_id, cons_value, date_value FROM TElecConsumption ORDER BY date_value DESC LIMIT 20;";
 			$resultelec = mysqli_query($mysqli, $sqlelec);
 
 			while ($rowelec = mysqli_fetch_array($resultelec)) {
@@ -43,7 +43,7 @@ session_start();
                 }
               }
 
-      $sqlhumid = "SELECT module_id, sensor_value, date_value FROM THumidity";
+      $sqlhumid = "SELECT module_id, sensor_value, date_value FROM THumidity ORDER BY date_value DESC LIMIT 20;";
 			$resulthumid = mysqli_query($mysqli, $sqlhumid);
 
 			while ($rowhumid = mysqli_fetch_array($resulthumid)) {
@@ -81,9 +81,10 @@ session_start();
   	<!--*****************NAVBAR*****************-->
    
   	<?php include 'navbar.php';?>
+    <?php include 'graphs.php';?>
 
 	<!--******************GRAPHS******************-->
-    <div id="id_graph"></div>
+
 
     <!--******************REFRESHGRAPH******************-->
 

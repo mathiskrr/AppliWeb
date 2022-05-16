@@ -11,7 +11,7 @@
 
     <link rel="stylesheet" href="style.css">
 	<title> Historique </title>
-	<link rel="icon" href="appliwebold/img/logodax.png" sizes="16x16">
+	<link rel="icon" href="img/logodax.png" sizes="16x16">
   </head>
    
   <body id="haut">
@@ -19,7 +19,7 @@
 
   	<!--*****************NAVBAR*****************-->
    
-  	<?php include 'appliweboold/navbar.php';?>
+  	<?php include 'navbar.php';?>
 
 	<!--******************MAIN******************-->
       
@@ -29,9 +29,9 @@
 
       <?php // connexion à la base de données pour afficher les valeurs dans un tableau
 
-			$servername = "192.168.0.28";
-			$username = "mathis_carrere";
-			$password = "sbRQi87R7";
+			$servername = "localhost";
+			$username = "root";
+			$password = "";
 			$dbname = "BEnOcean";
 
 			// Création de la connexion

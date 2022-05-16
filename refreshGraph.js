@@ -5,7 +5,6 @@ function refreshGraph() {
 		url: 'http://192.168.0.80/graphs.php',
 		dataType: 'html',
 		success : function(res) {
-			// id_graph doit être remplacé par l'id du div où se trouve ton graph (responds1)
 			$('#id_graph').html(res);
 				window.setTimeout( function(){ refreshGraph(); }, 10000); // 10000: en millisecondes
 			},
