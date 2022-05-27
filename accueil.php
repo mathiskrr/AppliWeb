@@ -1,59 +1,5 @@
 <!DOCTYPE html>
 
-<?php // connexion à la base de données pour afficher les valeurs dans un tableau
-
-session_start();
-
-          $servername = "localhost";
-          $username = "root";
-          $password = "";
-          $dbname = "BEnOcean";
-
-			// Création de la connexion
-			$mysqli = new mysqli($servername, $username, $password, $dbname) or die($mysqli->error);
-
-            $DateTemp = array();
-            $Temp = array();
-
-            $DateElec = array();
-            $Elec = array();
-
-            $DateHumid = array();
-            $Humid = array();
-
-
-			//Récupération des données de mesures
-			$sqltemp = "SELECT module_id, sensor_value, date_value FROM TTemperature ORDER BY date_value DESC LIMIT 20;";
-			$resulttemp = mysqli_query($mysqli, $sqltemp);
-
-			while ($rowtemp = mysqli_fetch_array($resulttemp)) {
-                $DateTemp[] = $rowtemp['date_value'];
-                if ($rowtemp['module_id'] <= 100000000) {      
-                  $Temp[] = $rowtemp['sensor_value'];
-                }
-              }
-
-      $sqlelec = "SELECT module_id, cons_value, date_value FROM TElecConsumption ORDER BY date_value DESC LIMIT 20;";
-			$resultelec = mysqli_query($mysqli, $sqlelec);
-
-			while ($rowelec = mysqli_fetch_array($resultelec)) {
-                $DateElec[] = $rowelec['date_value'];
-                if ($rowelec['module_id'] <= 100000000) {      
-                  $Elec[] = $rowelec['cons_value'];
-                }
-              }
-
-      $sqlhumid = "SELECT module_id, sensor_value, date_value FROM THumidity ORDER BY date_value DESC LIMIT 20;";
-			$resulthumid = mysqli_query($mysqli, $sqlhumid);
-
-			while ($rowhumid = mysqli_fetch_array($resulthumid)) {
-                $DateHumid[] = $rowhumid['date_value'];
-                if ($rowhumid['module_id'] <= 100000000) {      
-                  $Humid[] = $rowhumid['sensor_value'];
-                }
-              }
-		?>
-
 <html lang="fr">
    <head>
     <!-- Required meta tags -->
@@ -65,6 +11,8 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="./refreshGraph.js"></script>
+    <script src="./graphs.js"></script>
 
 
     <!-- CSS -->
@@ -80,21 +28,30 @@ session_start();
 
   	<!--*****************NAVBAR*****************-->
    
-  	<?php include 'navbar.php';?>
-    <?php include 'graphs.php';?>
+  	<?php include 'navbar.html';?>
 
 	<!--******************GRAPHS******************-->
-
+    <div id="id_graph">
+      <div class='Graphiques'>
+      <div class="graph1">
+          <canvas id="chart1" style="width: 55%; height: 55%; background: #222; border: 1px solid #555652; margin-top: 10px;"></canvas>
+      </div>
+      <div class="graph2">
+          <canvas id="chart2" style="width: 55%; height: 55%; background: #222; border: 1px solid #555652; margin-top: 10px;"></canvas>
+      </div>
+      <div class="graph3">
+          <canvas id="chart3" style="width: 55%; height: 55%; background: #222; border: 1px solid #555652; margin-top: 10px;"></canvas>
+      </div>
+    </div>
+  </div>
 
     <!--******************REFRESHGRAPH******************-->
-
-    <script src="./refreshGraph.js"></script>
 
     <script type="text/javascript">
 	    $(document).ready(function () {
 		    // 1er appel pour inclure le graphe et mettre en route le timer
-		  refreshGraph();
-	  });
+		    refreshGraph();
+	    });
     </script>
 
    </body>

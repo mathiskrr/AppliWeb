@@ -1,16 +1,31 @@
-// rafraîssement du graph toutes les 60s
+function escapeHtml(unsafe) {
+    return unsafe
+         .replace(/&/g, "&amp;")
+         .replace(/</g, "&lt;")
+         .replace(/>/g, "&gt;")
+         .replace(/"/g, "&quot;")
+         .replace(/'/g, "&#039;");
+ }
+
+ // rafraîssement du graph toutes les 60s
 function refreshGraph() {
+	console.log('refreshGraph');
 	$.ajax({
 		type: 'GET', // type de requête (POST ou GET)
-		url: 'http://192.168.0.80/graphs.php',
-		dataType: 'html',
+		url: 'http://localhost/appliwebold/tableauws.php',
+		dataType: 'json',
 		success : function(res) {
-			$('#id_graph').html(res);
+
+			console.log(res);
+			constuctGraph(res['DateTemp'], res['$Temp'], res['$DateElec'], res['$Elec'], res['$DateHumid'], res['$Humid']);
+		},
+			/*$('#id_graph').html(escapeHtml(res));
 				window.setTimeout( function(){ refreshGraph(); }, 10000); // 10000: en millisecondes
-			},
+			},*/
 		error: function (res) {
+			console.log('error',res);
 			// rafraissement de toute la page si erreur Ajax
-			document.location.reload(true);
+			//document.location.reload(true);
 		}
 	});
 }

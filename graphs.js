@@ -1,18 +1,5 @@
-<div class='Graphiques'>
-   <div class="graph1">
-      <canvas id="chart1" style="width: 55%; height: 55%; background: #222; border: 1px solid #555652; margin-top: 10px;"></canvas>
-   </div>
-   <div class="graph2">
-      <canvas id="chart2" style="width: 55%; height: 55%; background: #222; border: 1px solid #555652; margin-top: 10px;"></canvas>
-   </div>
-   <div class="graph3">
-      <canvas id="chart3" style="width: 55%; height: 55%; background: #222; border: 1px solid #555652; margin-top: 10px;"></canvas>
-   </div>
-  </div>
-
-      <script type="text/javascript">
-
-        /************************************
+    function constuctGraph($DateTemp, $Temp, $DateElec, $Elec, $DateHumid, $Humid) {
+     /************************************
         ***********    CHART 1    *********** 
         ************************************/
         var index = 11;
@@ -20,11 +7,11 @@
           const myChart1 = new Chart(ctx1, {
             type: 'line',
             data: {
-                labels: ['<?php echo implode("','",array_unique($DateTemp)); ?>'],
+                labels: [$DateTemp],
                 datasets: 
                 [{
                     label: 'Temperature',
-                    data: [<?php echo implode(",",$Temp); ?>],
+                    data: [$Temp],
                     backgroundColor: 'transparent',
                     borderColor:'#eeff00',
                     borderWidth: 3
@@ -46,11 +33,11 @@
           var myChart2 = new Chart(ctx2, {
             type: 'line',
             data: {
-                labels: ['<?php echo implode("','",array_unique($DateElec)); ?>'],
+                labels: [$DateElec],
                 datasets: 
                 [{
                     label: 'Consommation Électrique',
-                    data: [<?php echo implode(",",$Elec); ?>],
+                    data: [$Elec],
                     backgroundColor: 'transparent',
                     borderColor:'#2f00ff',
                     borderWidth: 3
@@ -72,11 +59,11 @@
           const myChart3 = new Chart(ctx3, {
             type: 'line',
             data: {
-                labels: ['<?php echo implode("','",array_unique($DateHumid)); ?>'],
+                labels: [$DateHumid],
                 datasets: 
                 [{
                     label: 'Humidité',
-                    data: [<?php echo implode(",",$Humid); ?>],
+                    data: [$Humid],
                     backgroundColor: 'transparent',
                     borderColor:'#15ff00',
                     borderWidth: 3
@@ -89,4 +76,4 @@
                 legend:{display: true, position: 'top', labels: {fontColor: 'rgb(255,255,255)', fontSize: 16}}
             }
         });
-      </script>  
+    }
