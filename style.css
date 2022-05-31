@@ -61,4 +61,24 @@ h2 {
 	margin-left: 35%;
 }
 
+#temp{
+	color: #fff;
+	background: #d80707;
+	padding: 5px;
+	margin-left: 59%;
+}
+
+#table_humid{
+	color: #fff;
+	background: #6EF4EE;
+	padding: 5px;
+	margin-left: 59%;
+}
+
+#table_elec{
+	color: #fff;
+	background: #6EF4EE;
+	padding: 5px;
+	margin-left: 59%;
+}
 

@@ -3,15 +3,15 @@
         ***********    CHART 1    *********** 
         ************************************/
         var index = 11;
-        const ctx1 = document.getElementById("chart1").getContext('2d');
-          const myChart1 = new Chart(ctx1, {
+        var ctx1 = document.getElementById("chart1").getContext('2d');
+          var myChart1 = new Chart(ctx1, {
             type: 'line',
             data: {
                 labels: [$DateTemp],
                 datasets: 
                 [{
                     label: 'Temperature',
-                    data: [$Temp],
+                    data: $Temp,
                     backgroundColor: 'transparent',
                     borderColor:'#eeff00',
                     borderWidth: 3
@@ -37,7 +37,7 @@
                 datasets: 
                 [{
                     label: 'Consommation Électrique',
-                    data: [$Elec],
+                    data: $Elec,
                     backgroundColor: 'transparent',
                     borderColor:'#2f00ff',
                     borderWidth: 3
@@ -45,7 +45,7 @@
             },
          
             options: {
-                scales: {scales:{yAxes: [{beginAtZero: false}], xAxes: [{autoskip: true, maxTicketsLimit: 20}]}},
+                scales: {scales:{yAxes: [{beginAtZero: true}], xAxes: [{autoskip: true, maxTicketsLimit: 20}]}},
                 tooltips:{mode: 'index'},
                 legend:{display: true, position: 'top', labels: {fontColor: 'rgb(255,255,255)', fontSize: 16}}
             }
@@ -63,7 +63,7 @@
                 datasets: 
                 [{
                     label: 'Humidité',
-                    data: [$Humid],
+                    data: $Humid,
                     backgroundColor: 'transparent',
                     borderColor:'#15ff00',
                     borderWidth: 3
@@ -71,7 +71,7 @@
             },
          
             options: {
-                scales: {scales:{yAxes: [{beginAtZero: false}], xAxes: [{autoskip: true, maxTicketsLimit: 20}]}},
+                scales: {scales:{yAxes: [{beginAtZero: true}], xAxes: [{autoskip: true, maxTicketsLimit: 20}]}},
                 tooltips:{mode: 'index'},
                 legend:{display: true, position: 'top', labels: {fontColor: 'rgb(255,255,255)', fontSize: 16}}
             }
