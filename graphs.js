@@ -1,4 +1,4 @@
-    function constuctGraph($DateTemp, $Temp, $DateElec, $Elec, $DateHumid, $Humid) {
+    function constructGraph(DateTemp, Temp, DateElec, Elec, DateHumid, Humid) {
      /************************************
         ***********    CHART 1    *********** 
         ************************************/
@@ -7,11 +7,11 @@
           var myChart1 = new Chart(ctx1, {
             type: 'line',
             data: {
-                labels: [$DateTemp],
+                labels: DateTemp,
                 datasets: 
                 [{
                     label: 'Temperature',
-                    data: $Temp,
+                    data: Temp,
                     backgroundColor: 'transparent',
                     borderColor:'#eeff00',
                     borderWidth: 3
@@ -33,11 +33,11 @@
           var myChart2 = new Chart(ctx2, {
             type: 'line',
             data: {
-                labels: [$DateElec],
+                labels: DateElec,
                 datasets: 
                 [{
                     label: 'Consommation Électrique',
-                    data: $Elec,
+                    data: Elec,
                     backgroundColor: 'transparent',
                     borderColor:'#2f00ff',
                     borderWidth: 3
@@ -59,11 +59,11 @@
           const myChart3 = new Chart(ctx3, {
             type: 'line',
             data: {
-                labels: [$DateHumid],
+                labels: DateHumid,
                 datasets: 
                 [{
                     label: 'Humidité',
-                    data: $Humid,
+                    data: Humid,
                     backgroundColor: 'transparent',
                     borderColor:'#15ff00',
                     borderWidth: 3

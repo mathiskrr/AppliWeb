@@ -21,7 +21,6 @@ $result_elecconsumption = mysqli_query($connect, $query_elecconsumption);
     <meta name="description" content="Page Tableau Conso Elec">
     <!-- CSS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>  
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>  
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -34,19 +33,20 @@ $result_elecconsumption = mysqli_query($connect, $query_elecconsumption);
     <?php include 'navbar.html'; ?>
     <!--******************MAIN******************-->
     <br /><br />  
-    <div class="container" style="width:500px;">
+    <div class="container" style="width:900
+    px;">
     <div class="col-md-3">  
-      <input type="text" name="from_date" id="from_date" class="form-control" placeholder="From Date" />  
+      <input type="text" name="from_date" id="from_date" class="form-control" placeholder="Du" />  
     </div>
     <div class="col-md-3">  
-      <input type="text" name="to_date" id="to_date" class="form-control" placeholder="To Date" />  
+      <input type="text" name="to_date" id="to_date" class="form-control" placeholder="Au" />  
     </div>
     <div class="col-md-5">  
       <input type="button" name="filter" id="filter" value="Filtrer" class="btn btn-info" />  
     </div>
     <div style="clear:both"></div>
     <br />  
-    <h3> Tableau Historique Température </h3>
+    <h3 id="Temp"> Tableau Historique Température </h3>
     <!--Entête du tableau Température-->
     <div id="order_table" >
         <table class="table table-hover table-striped" href="#temp">
@@ -69,29 +69,8 @@ $result_elecconsumption = mysqli_query($connect, $query_elecconsumption);
               
               ?>
         </table>
-      <h3> Tableau Historique Humidité </h3>
+      <h3 id="Elec"> Tableau Historique Consommation Électrique </h3>
         <table class="table table-hover table-striped" href="#humid">
-          <thead>
-            <tr>
-              <th scope="col">Date</th>
-              <th scope="col">Valeur (%)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <!--Corps du tableau Huymidity-->
-            <?php
-              while ($row = mysqli_fetch_array($result_humidity))
-              {
-                  echo "<tr><td>" . $row["date_value"] . "</td>
-                            <td>" . $row["sensor_value"] . "</td>
-                            </tr>";
-              }
-              echo "</tbody>";
-              
-              ?>
-        </table>
-      <h3> Tableau Historique Consommation Électrique </h3>
-        <table class="table table-hover table-striped" href="#elec">
           <thead>
             <tr>
               <th scope="col">Date</th>
@@ -105,6 +84,27 @@ $result_elecconsumption = mysqli_query($connect, $query_elecconsumption);
               {
                   echo "<tr><td>" . $row["date_value"] . "</td>
                             <td>" . $row["cons_value"] . "</td>
+                            </tr>";
+              }
+              echo "</tbody>";
+              
+              ?>
+        </table>
+      <h3 id="Humid"> Tableau Historique Consommation Humidité </h3>
+        <table class="table table-hover table-striped" href="#elec">
+          <thead>
+            <tr>
+              <th scope="col">Date</th>
+              <th scope="col">Valeur (%)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!--Corps du tableau Humidity-->
+            <?php
+              while ($row = mysqli_fetch_array($result_humidity))
+              {
+                  echo "<tr><td>" . $row["date_value"] . "</td>
+                            <td>" . $row["sensor_value"] . "</td>
                             </tr>";
               }
               echo "</tbody>";
@@ -140,7 +140,7 @@ $result_elecconsumption = mysqli_query($connect, $query_elecconsumption);
 					}
 				});
 			} else {
-				alert("Please Select Date");
+				alert("Sélectionnez une date s'il vous plaît");
 			}
 		});
 	}); 

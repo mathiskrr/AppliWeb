@@ -20,8 +20,8 @@ $DateHumid = array();
 $Humid     = array();
 
 
-//Récupération des données de mesures
-$sqltemp    = "SELECT module_id, sensor_value, date_value FROM TTemperature ORDER BY date_value DESC LIMIT 20;";
+//Récupération des données de mesuresy
+$sqltemp    = "SELECT * FROM (SELECT module_id, sensor_value, date_value FROM TTemperature ORDER BY date_value DESC LIMIT 20) AS Temp ORDER BY date_value;";
 $resulttemp = mysqli_query($mysqli, $sqltemp);
 
 while ($rowtemp = mysqli_fetch_array($resulttemp)) {
@@ -31,7 +31,7 @@ while ($rowtemp = mysqli_fetch_array($resulttemp)) {
     }
 }
 
-$sqlelec    = "SELECT module_id, cons_value, date_value FROM TElecConsumption ORDER BY date_value DESC LIMIT 20;";
+$sqlelec    = "SELECT * FROM (SELECT module_id, cons_value, date_value FROM TElecConsumption ORDER BY date_value DESC LIMIT 20) AS Elec ORDER BY date_value;";
 $resultelec = mysqli_query($mysqli, $sqlelec);
 
 while ($rowelec = mysqli_fetch_array($resultelec)) {
@@ -41,7 +41,7 @@ while ($rowelec = mysqli_fetch_array($resultelec)) {
     }
 }
 
-$sqlhumid    = "SELECT module_id, sensor_value, date_value FROM THumidity ORDER BY date_value DESC LIMIT 20;";
+$sqlhumid    = "SELECT * FROM (SELECT module_id, sensor_value, date_value FROM THumidity ORDER BY date_value DESC LIMIT 20) AS Humid ORDER BY date_value;";
 $resulthumid = mysqli_query($mysqli, $sqlhumid);
 
 while ($rowhumid = mysqli_fetch_array($resulthumid)) {
