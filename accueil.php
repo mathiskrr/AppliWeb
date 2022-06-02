@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 
 <html lang="fr">
@@ -37,13 +39,13 @@
     <div id="id_graph">
       <div class='Graphiques'>
       <div class="graph1">
-          <canvas id="chart1" style="width: 59%; height: 55%; background: #222; border: 1px solid #555652; margin-top: 10px;"></canvas>
+          <canvas id="chart1" style="width: 56%; height: 55%; background: #222; border: 1px solid #555652; margin-top: 10px;"></canvas>
       </div>
       <div class="graph2">
-          <canvas id="chart2" style="width: 59%; height: 55%; background: #222; border: 1px solid #555652; margin-top: 10px;"></canvas>
+          <canvas id="chart2" style="width: 56%; height: 55%; background: #222; border: 1px solid #555652; margin-top: 10px;"></canvas>
       </div>
       <div class="graph3">
-          <canvas id="chart3" style="width: 59%; height: 55%; background: #222; border: 1px solid #555652; margin-top: 10px;"></canvas>
+          <canvas id="chart3" style="width: 56%; height: 55%; background: #222; border: 1px solid #555652; margin-top: 10px;"></canvas>
       </div>
     </div>
   </div>

@@ -3,7 +3,7 @@ function refreshGraph(timeout) {
 	console.log('refreshGraph');
 	$.ajax({
 		type: 'GET', // type de requête (POST ou GET)
-		url: 'http://localhost/appliwebold/graphsws.php',
+		url: 'http://192.168.0.28/appliwebold/graphsws.php',
 		dataType: 'json',
 		success : function(res) {
 			constructGraph(res['DateTemp'], res['Temp'], res['DateElec'], res['Elec'], res['DateHumid'], res['Humid']);

@@ -1,10 +1,9 @@
 <?php // connexion à la base de données pour afficher les valeurs dans un tableau
-
 session_start();
 
-$servername = "localhost";
-$username   = "root";
-$password   = "";
+$servername = "192.168.0.28";
+$username   = "mathis_carrere";
+$password   = "sbRQi87R7";
 $dbname     = "BEnOcean";
 
 // Création de la connexion
@@ -19,9 +18,23 @@ $Elec     = array();
 $DateHumid = array();
 $Humid     = array();
 
+$urlsalle = "http://192.168.0.28/appliwebold/accueil.php?salle=1";
+$components = parse_url($urlsalle, PHP_URL_QUERY);
+parse_str($components, $results);
+$salle=$_GET['salle'];
 
 //Récupération des données de mesuresy
-$sqltemp    = "SELECT * FROM (SELECT module_id, sensor_value, date_value FROM TTemperature ORDER BY date_value DESC LIMIT 20) AS Temp ORDER BY date_value;";
+$sqltemp    = "SELECT * 
+FROM 
+(SELECT t.module_id, sensor_value, date_value 
+FROM TTemperature t, TModules m, TRoom r 
+WHERE t.module_id = m.module_id 
+AND m.room_id = r.room_id 
+AND r.room_id =".$salle." 
+ORDER BY e.date_value 
+DESC LIMIT 20) 
+AS Elec 
+ORDER BY date_value";
 $resulttemp = mysqli_query($mysqli, $sqltemp);
 
 while ($rowtemp = mysqli_fetch_array($resulttemp)) {
@@ -31,7 +44,17 @@ while ($rowtemp = mysqli_fetch_array($resulttemp)) {
     }
 }
 
-$sqlelec    = "SELECT * FROM (SELECT module_id, cons_value, date_value FROM TElecConsumption ORDER BY date_value DESC LIMIT 20) AS Elec ORDER BY date_value;";
+$sqlelec    = "SELECT * 
+FROM 
+(SELECT e.module_id, cons_value, date_value 
+FROM TElecConsumption e, TModules m, TRoom r 
+WHERE e.module_id = m.module_id 
+AND m.room_id = r.room_id 
+AND r.room_id =".$salle." 
+ORDER BY e.date_value 
+DESC LIMIT 20) 
+AS Elec 
+ORDER BY date_value";
 $resultelec = mysqli_query($mysqli, $sqlelec);
 
 while ($rowelec = mysqli_fetch_array($resultelec)) {
@@ -41,7 +64,17 @@ while ($rowelec = mysqli_fetch_array($resultelec)) {
     }
 }
 
-$sqlhumid    = "SELECT * FROM (SELECT module_id, sensor_value, date_value FROM THumidity ORDER BY date_value DESC LIMIT 20) AS Humid ORDER BY date_value;";
+$sqlhumid    = "SELECT * 
+FROM 
+(SELECT h.module_id, sensor_value, date_value 
+FROM THumidity h, TModules m, TRoom r 
+WHERE h.module_id = m.module_id 
+AND m.room_id = r.room_id 
+AND r.room_id =".$salle." 
+ORDER BY e.date_value 
+DESC LIMIT 20) 
+AS Elec 
+ORDER BY date_value";
 $resulthumid = mysqli_query($mysqli, $sqlhumid);
 
 while ($rowhumid = mysqli_fetch_array($resulthumid)) {

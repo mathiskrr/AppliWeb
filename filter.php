@@ -2,7 +2,7 @@
 //filter.php
 if (isset($_POST["from_date"], $_POST["to_date"]))
 {
-    $connect = mysqli_connect("localhost", "root", "", "BEnOcean");
+    $connect = mysqli_connect("192.168.0.28", "mathis_carrere", "sbRQi87R7", "BEnOcean");
     $output_temperature = '';
     $output_humidity = '';
     $output_elecconsumption = '';
@@ -45,7 +45,7 @@ if (isset($_POST["from_date"], $_POST["to_date"]))
     echo $output_temperature;
 
     $output_humidity .= '  
-    <h3> Tableau Historique Humidité </h3>
+    <h3 id="Humid"> Tableau Historique Humidité ( Dernières 24 heures ) </h3>
       <table class="table table-bordered">  
            <tr>  
                 <th>Humidté (%)</th>  
@@ -76,7 +76,7 @@ if (isset($_POST["from_date"], $_POST["to_date"]))
     echo $output_humidity;
 
     $output_elecconsumption .= '
-    <h3> Tableau Historique Consommation Électrique </h3>  
+    <h3 id="Elec"> Tableau Historique Consommation Électrique ( Dernières 24 heures ) </h3>  
      <table class="table table-bordered">  
           <tr>  
                <th>Valeur (W)</th>  

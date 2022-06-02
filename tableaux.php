@@ -1,10 +1,34 @@
 <?php
-// connexion à la base de données pour afficher les valeurs dans un tableau
-$connect = mysqli_connect("localhost", "root", "", "BEnOcean");
 
-$query_temperature = "SELECT sensor_value, date_value FROM TTemperature";
-$query_humidity = "SELECT sensor_value, date_value FROM THumidity";
-$query_elecconsumption = "SELECT cons_value, date_value FROM TElecConsumption";
+
+$urlsalle = "http://192.168.0.28/appliwebold/tableaux.php?salle=1";
+$components = parse_url($urlsalle, PHP_URL_QUERY);
+parse_str($components, $results);
+$salle=$_GET['salle'];
+
+
+
+// connexion à la base de données pour afficher les valeurs dans un tableau
+$connect = mysqli_connect("192.168.0.28", "mathis_carrere", "sbRQi87R7", "BEnOcean");
+
+$query_temperature = "SELECT sensor_value, date_value 
+FROM TTemperature t, TModules m, TRoom r 
+WHERE t.date_value > DATE_SUB(NOW(), INTERVAL 24 HOUR) 
+AND t.module_id = m.module_id
+AND m.room_id = r.room_id 
+AND r.room_id =".$salle;
+$query_humidity = "SELECT sensor_value, date_value 
+FROM THumidity h, TModules m, TRoom r 
+WHERE h.date_value > DATE_SUB(NOW(), INTERVAL 24 HOUR) 
+AND h.module_id = m.module_id
+AND m.room_id = r.room_id 
+AND r.room_id =".$salle;
+$query_elecconsumption = "SELECT cons_value, date_value 
+FROM TElecConsumption e, TModules m, TRoom r 
+WHERE e.date_value > DATE_SUB(NOW(), INTERVAL 24 HOUR) 
+AND e.module_id = m.module_id
+AND m.room_id = r.room_id 
+AND r.room_id =".$salle;
 
 $result_temperature = mysqli_query($connect, $query_temperature);
 $result_humidity = mysqli_query($connect, $query_humidity);
@@ -36,17 +60,17 @@ $result_elecconsumption = mysqli_query($connect, $query_elecconsumption);
     <div class="container" style="width:900
     px;">
     <div class="col-md-3">  
-      <input type="text" name="from_date" id="from_date" class="form-control" placeholder="Du" />  
+    <!--<input type="text" name="from_date" id="from_date" class="form-control" placeholder="Du" />-->
     </div>
     <div class="col-md-3">  
-      <input type="text" name="to_date" id="to_date" class="form-control" placeholder="Au" />  
+      <!--<input type="text" name="to_date" id="to_date" class="form-control" placeholder="Au" />-->
     </div>
     <div class="col-md-5">  
-      <input type="button" name="filter" id="filter" value="Filtrer" class="btn btn-info" />  
+      <!--<input type="button" name="filter" id="filter" value="Filtrer" class="btn btn-info" />-->
     </div>
     <div style="clear:both"></div>
     <br />  
-    <h3 id="Temp"> Tableau Historique Température </h3>
+    <h3 id="Temp"> Tableau Historique Température ( Dernières 24 heures ) </h3>
     <!--Entête du tableau Température-->
     <div id="order_table" >
         <table class="table table-hover table-striped" href="#temp">
@@ -69,7 +93,7 @@ $result_elecconsumption = mysqli_query($connect, $query_elecconsumption);
               
               ?>
         </table>
-      <h3 id="Elec"> Tableau Historique Consommation Électrique </h3>
+      <h3 id="Elec"> Tableau Historique Consommation Électrique ( Dernières 24 heures ) </h3>
         <table class="table table-hover table-striped" href="#humid">
           <thead>
             <tr>
@@ -90,7 +114,7 @@ $result_elecconsumption = mysqli_query($connect, $query_elecconsumption);
               
               ?>
         </table>
-      <h3 id="Humid"> Tableau Historique Consommation Humidité </h3>
+      <h3 id="Humid"> Tableau Historique Consommation Humidité ( Dernières 24 heures ) </h3>
         <table class="table table-hover table-striped" href="#elec">
           <thead>
             <tr>
@@ -116,7 +140,7 @@ $result_elecconsumption = mysqli_query($connect, $query_elecconsumption);
 </html>
 
 <script>
-	$(document).ready(function() {
+	/*$(document).ready(function() {
 		$.datepicker.setDefaults({
 			dateFormat: 'yy-mm-dd'
 		});
@@ -143,5 +167,5 @@ $result_elecconsumption = mysqli_query($connect, $query_elecconsumption);
 				alert("Sélectionnez une date s'il vous plaît");
 			}
 		});
-	}); 
+	}); */
 </script>
