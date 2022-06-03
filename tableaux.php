@@ -1,7 +1,7 @@
 <?php
 
 
-$urlsalle = "http://192.168.0.28/appliwebold/tableaux.php?salle=1";
+$urlsalle = "http://192.168.0.28/appliwebweb/tableaux.php?salle=1";
 $components = parse_url($urlsalle, PHP_URL_QUERY);
 parse_str($components, $results);
 $salle=$_GET['salle'];

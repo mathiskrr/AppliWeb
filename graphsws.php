@@ -18,19 +18,19 @@ $Elec     = array();
 $DateHumid = array();
 $Humid     = array();
 
-$urlsalle = "http://192.168.0.28/appliwebold/accueil.php?salle=1";
+/*$urlsalle = "http://192.168.0.28/appliwebold/accueil.php?salle=1";
 $components = parse_url($urlsalle, PHP_URL_QUERY);
 parse_str($components, $results);
-$salle=$_GET['salle'];
+$salle=$_GET['salle'];*/
 
 //Récupération des données de mesuresy
-$sqltemp    = "SELECT * 
+$sqltemp = "SELECT * 
 FROM 
 (SELECT t.module_id, sensor_value, date_value 
 FROM TTemperature t, TModules m, TRoom r 
 WHERE t.module_id = m.module_id 
 AND m.room_id = r.room_id 
-AND r.room_id =".$salle." 
+AND r.room_id = 1 
 ORDER BY e.date_value 
 DESC LIMIT 20) 
 AS Elec 
@@ -44,13 +44,13 @@ while ($rowtemp = mysqli_fetch_array($resulttemp)) {
     }
 }
 
-$sqlelec    = "SELECT * 
+$sqlelec = "SELECT * 
 FROM 
 (SELECT e.module_id, cons_value, date_value 
 FROM TElecConsumption e, TModules m, TRoom r 
 WHERE e.module_id = m.module_id 
 AND m.room_id = r.room_id 
-AND r.room_id =".$salle." 
+AND r.room_id = 1
 ORDER BY e.date_value 
 DESC LIMIT 20) 
 AS Elec 
@@ -64,13 +64,13 @@ while ($rowelec = mysqli_fetch_array($resultelec)) {
     }
 }
 
-$sqlhumid    = "SELECT * 
+$sqlhumid = "SELECT * 
 FROM 
 (SELECT h.module_id, sensor_value, date_value 
 FROM THumidity h, TModules m, TRoom r 
 WHERE h.module_id = m.module_id 
 AND m.room_id = r.room_id 
-AND r.room_id =".$salle." 
+AND r.room_id = 1 
 ORDER BY e.date_value 
 DESC LIMIT 20) 
 AS Elec 
