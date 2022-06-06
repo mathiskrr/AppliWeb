@@ -1,13 +1,14 @@
 // récupération du graphe
-function refreshGraph(timeout) {
-	console.log('refreshGraph');
+function refreshGraph(timeout,salle) {
+	console.log('refreshGraph', salle);
 	$.ajax({
 		type: 'GET', // type de requête (POST ou GET)
-		url: 'http://192.168.0.28/appliweb/graphsws.php',
+		url: 'http://localhost/appliweb/graphsws.php',
+		data: 'salle=' + salle,
 		dataType: 'json',
 		success : function(res) {
 			constructGraph(res['DateTemp'], res['Temp'], res['DateElec'], res['Elec'], res['DateHumid'], res['Humid']);
-			if (timeout !== 0) window.setTimeout( function(){ refreshGraph(timeout); }, timeout); // timeout: en millisecondes
+			if (timeout !== 0) window.setTimeout( function(){ refreshGraph(timeout,salle); }, timeout); // timeout: en millisecondes
 		},
 		error: function (res) {
 			console.log('error',res);

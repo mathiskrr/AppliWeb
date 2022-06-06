@@ -2,7 +2,7 @@
 //filter.php
 if (isset($_POST["from_date"], $_POST["to_date"]))
 {
-    $connect = mysqli_connect("192.168.0.28", "mathis_carrere", "sbRQi87R7", "BEnOcean");
+    $connect = mysqli_connect("localhost", "root", "", "BEnOcean");
     $output_temperature = '';
     $output_humidity = '';
     $output_elecconsumption = '';

@@ -1,3 +1,16 @@
+<?php
+
+if (!empty($_GET['salle'])) {
+  $salle=intval($_GET['salle']);
+  if ($salle <= 0 || $salle > 6) {
+    // message d'erreur
+    $salle=1;
+  }
+} else {
+  $salle=1;
+}
+?>
+
 <!DOCTYPE html>
 
 <html lang="fr">
@@ -28,11 +41,10 @@
 
   	<!--*****************NAVBAR*****************-->
    
-  	<?php include 'navbar.html';?>
+  	<?php include 'navbar.php';?>
 
 	<!--******************GRAPHS******************-->
-
-    <input type="button" name="refreshButton" id="refreshButton" value="Rafraichir" class="btn btn-info" />  
+    <input type="button" name="refreshButton" id="refreshButton" value="Rafraichir" class="btn btn-info" /> 
 
     <div id="id_graph">
       <div class='Graphiques'>
@@ -52,11 +64,11 @@
 
     <script type="text/javascript">
       $('#refreshButton').click(function() {
-        refreshGraph(0);
+        refreshGraph(0,<?php echo $salle ?>);
       });
 	    $(document).ready(function () {
 	      // 1er appel pour inclure le graphe et met en route le timer
-        refreshGraph(10000);
+        refreshGraph(10000,<?php echo $salle ?>);
 	    });
     </script>
 

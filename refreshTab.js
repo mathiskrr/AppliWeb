@@ -1,13 +1,15 @@
-// récupération du graphe
-function refreshTab(timeout) {
-	console.log('refreshTab');
+// récupération du tableau
+function refreshTab(timeout,salle) {
+	console.log('refreshTab', salle);
 	$.ajax({
 		type: 'GET', // type de requête (POST ou GET)
-		url: 'http://192.168.0.28/appliwebold/tableauws.php',
+		url: 'http://localhost/appliweb/tableauws.php',
+		data: 'salle=' + salle,
 		dataType: 'json',
 		success : function(res) {
-			constructTab(res['DateTemp'], res['Temp'], res['DateElec'], res['Elec'], res['DateHumid'], res['Humid']);
-			if (timeout !== 0) window.setTimeout( function(){ refreshTab(timeout); }, timeout); // timeout: en millisecondes
+			constructTab(res['Temp'], res['Elec'], res['Humid']);
+			//console.log(res);
+			if (timeout !== 0) window.setTimeout( function(){ refreshTab(timeout,salle); }, timeout); // timeout: en millisecondes
 		},
 		error: function (res) {
 			console.log('error',res);

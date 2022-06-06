@@ -1,8 +1,7 @@
-    
     <!--*****************NAVBAR*****************-->
      <nav class="navbar navbar-expand-lg navbar-light bg-light"> 
     	<a class="navbar-brand" href="#haut">
-    		<img src="img/logodax.png"></a> <div class="navbarh1"><h1>Salles de Travail</h1></div>
+    		<img src="img/logodax.png"></a> <div class="navbarh1"><h1>Salles de Travail - Salle <?php echo $salle?></h1></div>
     	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       		<span class="navbar-toggler-icon"></span>
     	</button>
@@ -13,8 +12,8 @@
             <a href="tableaux.php" style="margin-left:15px">
                 <img src="img/liste.png" width="40px" height="40px"></a>
             </li>
-            <a href="accueil.php" style="margin-left:15px">
-                <img src="img/accueil.png" width="40px" height="40px"></a>
+            <a href="graphs.php" style="margin-left:15px">
+                <img src="img/graph.png" width="40px" height="40px"></a>
             </li>     
           </ul> 		  
   		</div>
