@@ -44,7 +44,7 @@ if (!empty($_GET['salle'])) {
     <h3 id="Elec"> Tableau Historique Consommation Électrique ( Dernières 24 heures ) </h3>
     <div id="idelec"></div>
 
-    <h3 id="Humid"> Tableau Historique Consommation Humidité ( Dernières 24 heures ) </h3>
+    <h3 id="Humid"> Tableau Historique Humidité ( Dernières 24 heures ) </h3>
     <div id="idhumid"></div>
   </body>
 </html>
