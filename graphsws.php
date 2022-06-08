@@ -33,7 +33,8 @@ $sqltemp = sprintf("SELECT *
 FROM 
 (SELECT t.module_id, t.sensor_value, t.date_value 
 FROM TTemperature t, TModules m, TRoom r 
-WHERE t.module_id = m.module_id 
+WHERE t.date_value > DATE_SUB(NOW(), INTERVAL 24 HOUR) 
+AND t.module_id = m.module_id 
 AND m.room_id = r.room_id 
 AND r.room_id = %d 
 ORDER BY t.date_value 
@@ -53,7 +54,8 @@ $sqlelec = sprintf("SELECT *
 FROM 
 (SELECT e.module_id, e.cons_value, e.date_value 
 FROM TElecConsumption e, TModules m, TRoom r 
-WHERE e.module_id = m.module_id 
+WHERE e.date_value > DATE_SUB(NOW(), INTERVAL 24 HOUR) 
+AND e.module_id = m.module_id 
 AND m.room_id = r.room_id 
 AND r.room_id = %d
 ORDER BY e.date_value 
@@ -73,7 +75,8 @@ $sqlhumid = sprintf("SELECT *
 FROM 
 (SELECT h.module_id, h.sensor_value, h.date_value 
 FROM THumidity h, TModules m, TRoom r 
-WHERE h.module_id = m.module_id 
+WHERE h.date_value > DATE_SUB(NOW(), INTERVAL 24 HOUR) 
+AND h.module_id = m.module_id 
 AND m.room_id = r.room_id 
 AND r.room_id = %d 
 ORDER BY h.date_value 

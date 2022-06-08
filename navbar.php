@@ -9,10 +9,10 @@
    		<div class="collapse navbar-collapse" id="navbarSupportedContent">
        <ul class="navbar-nav ml-auto">
             
-            <a href="tableaux.php" style="margin-left:15px">
+            <a href="tableaux.php?salle=<?php echo $salle?>" style="margin-left:15px">
                 <img src="img/liste.png" width="40px" height="40px"></a>
             </li>
-            <a href="graphs.php" style="margin-left:15px">
+            <a href="graphs.php?salle=<?php echo $salle?>" style="margin-left:15px">
                 <img src="img/graph.png" width="40px" height="40px"></a>
             </li>     
           </ul> 		  
